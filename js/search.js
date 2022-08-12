@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             modalRecipe.classList.add("hidden");
             document.body.classList.remove("modal-open");
             document.body.style.overflow = "";
+            
         }
     });
 

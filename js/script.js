@@ -35,20 +35,13 @@ function closePopup(){
 
 
 
-// Registration form closing with submit button using if else
-let submitBtn = document.getElementById("submit-button");
-
-console.log()
-// 
-
-
-
 // Registration form poping up Sign up or Log in
 let confirmField = document.getElementById("confirm-field");
 let popupTitle = document.getElementById("popup-title");
 let signupBtn = document.getElementById("new-account-button");
 let loginBtn = document.getElementById("log-in-button");
 let forgotBtn = document.getElementById("forgot-password-button");
+let submitBtn = document.getElementById("submit-button");
 
 function openSignupPopup(){
     popupBox.classList.add("open-popup");
@@ -155,18 +148,18 @@ $(".popup-box form").on("submit", function(e){
 
 
 // Gallery scrolling and clicking
-const scrollContainer = document.querySelector(".recipe-gallery");
+const scrollContainer = document.querySelector(".category-samples");
 
 document.querySelectorAll(".fa-caret-right").forEach(rightBtn => {
     rightBtn.addEventListener("click", () => {
-        const gallery = rightBtn.closest(".gallery-container").querySelector(".recipe-gallery");
+        const gallery = rightBtn.closest(".gallery-container").querySelector(".category-samples");
         gallery.scrollLeft += 338;
     })
 });
 
 document.querySelectorAll(".fa-caret-left").forEach(LeftBtn => {
     LeftBtn.addEventListener("click", () => {
-        const gallery = LeftBtn.closest(".gallery-container").querySelector(".recipe-gallery");
+        const gallery = LeftBtn.closest(".gallery-container").querySelector(".category-samples");
         gallery.scrollLeft -= 338;
     })
 });
