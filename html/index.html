@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Snow Fox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+<script src="https://kit.fontawesome.com/e55d522acc.js" crossorigin="anonymous"></script>
+</head>
+<body class="page-home">
+    <!-- HEADER -->
+    <header class="header">
+        <section id="navbar">
+
+            <div class="nav-title">
+                <div class="main-icon"><a href="index.html"><img src="../img/main-icon.png" alt="Snow Fox app icon" height="60vw"></a></div>
+                <div class="main-title"><a href=""><h1>Snow Fox</h1></a></div>
+            </div>
+
+            <div class="nav-text">
+                <ul>
+                    <li><a href="index.html" class="nav-active">Home</a></li>
+                    <li><a href="foxrecipes.html">Recipes</a></li>
+                    <li><a href="foxfavorites.html">Favorites</a></li>
+                    <li><a href="foximport.html">Import recipe</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </header>
+    <!-- -->
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- WELCOME SECTION -->
+        <section id="welcome-container">
+
+            <div class="welcome-main">
+                <div class="welcome-header">
+                    <h2>All of your favorite recipes in the palm of your hand!</h2>
+                </div>
+
+                <form>
+                    <div class="search">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" class="search-text" name="search-bar" id="search-bar" placeholder="What recipe are you looking for?">
+                    </div>
+                </form>
+
+                <div class="registration">
+                    <div class="join-header">
+                        <p>Unlock all your food wishes!</p>
+                    </div>
+
+                    <div class="join-main">
+                        <button type="button" class="join-button" onclick="openSignupPopup()">Join</button>
+                    </div>
+
+                    <!-- JOIN/LOGIN -->
+                    <div class="log-in">
+                        <div class="log-in-text">
+                            <p>Do you already have an account? </p>
+                        </div>
+
+                        <div class="log-in-main">
+                            <button type="button" class="log-in-button" onclick="openLoginPopup()">Log in</button>
+                        </div>
+                    </div>
+                    <!-- -->
+                </div>
+            </div>
+                    
+
+            <!-- POPUP WINDOW -->
+            <div class="popup">
+
+                <div class="popup-box" id="popup-box">
+                    <span class="popup-cross" onclick="closePopup()">&#10005;</span>
+                            <h2 id="popup-title">Sign-up</h2>
+                            <form>
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input type="email" name="email" id="email" placeholder="Email" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <input type="password" name="password" id="password" placeholder="Password" minlength="7" required>
+                                    </div>
+
+                                    <div id="confirm-remove">
+                                        <div class="input-field" id="confirm-field">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="forgot-password-field">
+                                        <button type="button" id="forgot-password-button">Forgot password</button>
+                                    </div>
+
+                                    <div class="button-field">
+                                        <button type="submit" id="submit-button">Create account</button>
+                                    </div>
+
+                                    <div class="option-field option-field-closed" id="button-option">
+                                        <button type="button" id="new-account-button" class="disabled">New account</button>
+                                        <button type="button" id="log-in-button">Log in</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                    </div>
+            </div>
+            <!-- -->
+
+            <!-- POPUP ALERT -->
+            <div class="alert hidden">
+                <i class="fa-solid fa-paperclip"></i>
+                <span class="alert-message">You have "created" an account. Great job!</span>
+                <span class="alert-message">I hope we will meet soon!</span>
+                <div class="alert-button">
+                    <span class="alert-cross">&#10005;</span>
+                </div>
+            </div>
+            <!-- -->
+ 
+
+            <!-- DOWN ARROW -->
+            <div class="arrow"><a href="#recipes-container"><i class="fa-solid fa-arrow-down"></i></a></div>
+            <!-- -->
+
+        <!-- RECIPES SECTION -->
+        </section>
+
+        <section id="recipes-container">
+            <!-- DINE RECIPES -->
+            <div class="dine-recipes">
+                <div class="recipes-heading">
+                    <h2>Let's Dine</h2>
+                </div>
+
+                <div class="gallery-container">
+                    <i class="fa-solid fa-caret-left"></i>
+
+                    <div class="recipe-gallery">
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>-------</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="13">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Czech Bacon Dumplings</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="12">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Smash Burger</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="10">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Stuffed Crust Pizza</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="recipe-item" data-id="7">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Protain Milkshake</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="5">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Chicken Burger</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <i class="fa-solid fa-caret-right"></i>
+                </div>
+            <div class="recipes-btn">
+                <button onclick="location.href=`foxrecipes.html#lunch`">View all</button>
+            </div>
+            <!-- -->
+
+            <!-- SWEET RECIPES -->
+            <div class="sweet-recipes">
+                <div class="recipes-heading">
+                    <h2>For Sweet Dreams</h2>
+                </div>
+
+                <div class="gallery-container">
+                    <i class="fa-solid fa-caret-left"></i>
+
+                    <div class="recipe-gallery">
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="15">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Chocolate Chip Cookies</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="14">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Sponge Cherry Cake</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="11">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Brownies</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="6">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Cinnamon Rolls</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="recipe-item" data-id="4">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Banana Walnut Muffins</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="3">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Double Chocolate Muffins</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <i class="fa-solid fa-caret-right"></i>
+                </div>
+            <div class="recipes-btn">
+                <button onclick="location.href=`foxrecipes.html#desserts`">View all</button>
+            </div>
+            <!-- -->
+
+            <!-- BAKING RECIPES -->
+            <div class="baking-recipes">
+                <div class="recipes-heading">
+                    <h2>Bakery&Pastry</h2>
+                </div>
+
+                <div class="gallery-container">
+                    <i class="fa-solid fa-caret-left"></i>
+
+                    <div class="recipe-gallery">
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>-------</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>-------</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>-------</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-items">
+                            <div class="recipe-item" data-id="9">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>One Hour Dough Pizza</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="recipe-item" data-id="8">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Ultimate Pizza Dough</h3>
+                                </div>
+                            </div>
+
+                            <div class="recipe-item" data-id="1">
+                                <img src="../img/1010.jpg" alt="" style="width: 100%;">
+                                <div class="recipe-linear-gradient"></div>
+                                <div class="recipe-item-text">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>3hr</p>
+                                </div>
+                                <div class="recipe-item-heading">
+                                    <h3>Burger Buns</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <i class="fa-solid fa-caret-right"></i>
+                </div>
+            <div class="recipes-btn">
+                <button onclick="location.href=`foxrecipes.html#bakery`">View all</button>
+            </div>
+
+            <!-- MODAL CONTAINER DETAILS -->
+            <div class="modal-container hidden" id="recipe-modal">
+                <div class="modal-content">
+                    <span class="modal-close-cross" id="modal-close-cross">&#10005;</span>
+                    
+                    <div id="recipe-details-content">
+                        <div class="recipe-details-heading">
+                            <div class="recipe-details-heading-text">
+                                <h2>Meal name here</h2>
+                                <div class="recipe-details-cook-time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Cook time:</p>
+                                    <p>3hr</p>
+                                </div>
+                            </div>
+                            <div class="recipe-details-heading-img">
+                            <img src="../img/1010.jpg" style="width: 80%;" alt="">
+                            </div>
+                        </div>
+                        <article class="recipe-details-list">
+                            <div class="recipe-details-ingredients">
+                            <h2>Ingedients</h2>
+
+                                <ul>
+                                    <li>ingredients info</li>
+                                    <li>ingredients info</li>
+                                    <li>ingredients info</li>
+                                    <li>ingredients info</li>
+                                    <li>ingredients info</li>
+                                </ul>
+                            </div>
+
+                            <div class="recipe-details-directions">
+                            <h2>Directions</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit soluta iure, laudantium, necessitatibus tempora eum ut ab quo veniam illum nulla hic, amet quos corrupti quae fugiat eius error. Ut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit soluta iure, laudantium, necessitatibus tempora eum ut ab quo veniam illum nulla hic, amet quos corrupti quae fugiat eius error. Ut?</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        <!-- -->
+
+        </section>
+            <!-- -->
+        <!-- -->
+
+    </main>
+    <!-- -->
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-text">
+            <p>&copy; 
+                <!-- -->
+                2025 
+                <!-- -->
+                <a href="#" style="color: #363636; font-weight: 400;">Filip Urbásek.</a>
+                <!-- -->
+                 All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+    <!-- -->
+    
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/search.js" defer></script>
+</body>
+</html>

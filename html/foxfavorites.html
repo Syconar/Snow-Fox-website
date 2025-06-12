@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Snow Fox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+<script rel="preload" src="https://kit.fontawesome.com/e55d522acc.js" crossorigin="anonymous"></script>
+</head>
+<body class="fox-favorites">
+<!-- HEADER -->
+    <header class="header">
+        <section id="navbar">
+
+            <div class="nav-title">
+                <div class="main-icon"><a href="index.html"><img src="../img/main-icon.png" alt="Snow Fox app icon" height="60vw"></a></div>
+                <div class="main-title"><a href="index.html"><h1>Snow Fox</h1></a></div>
+            </div>
+
+            <div class="nav-text">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="foxrecipes.html">Recipes</a></li>
+                    <li><a href="foxfavorites.html" class="nav-active">Favorites</a></li>
+                    <li><a href="foximport.html">Import recipe</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </header>
+<!-- -->
+
+
+
+<!-- MAIN -->
+    <main>
+    <!-- SEARCH BUTTONS -->
+        <section id="searching-container">
+            <div class="recipes-content">
+                <h2 class="recipes-page-heading">My Favorites</h2>
+
+                <div class="recipes-option-field">
+                    <div class="recipes-option-button">
+                        <button type="button" data-category="all" class="selected">All</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="button" data-category="imported">Imported</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="breakfast">Breakfast</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="lunch">Lunch</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="dinner">Dinner</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="desserts">Desserts</button>
+                    </div> 
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="bakery">Bakery</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="pastries">Pastries</button>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+
+            <!-- SEARCH BAR -->
+            <form id="search-form" style="justify-content: start;">
+                <div class="recipes-page-search">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="search" class="search-text" name="search-bar" id="search-bar" placeholder="Search for your favorite recipe. . ." oninput="searchRecipes()">
+                </div>
+            </form>
+
+
+
+    </main>
+<!-- -->
+
+
+
+<!-- FOOTER -->
+    <footer>
+
+        <div class="footer-text">
+            <p>&copy; 
+                <!-- -->
+                2025 
+                <!-- -->
+                <a href="#" style="color: #363636; font-weight: 400;">Filip Urbásek.</a>
+                <!-- -->
+                 All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+<!-- -->
+
+<script src="../js/search.js" defer></script>
+    
+</body>
+</html>

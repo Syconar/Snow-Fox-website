@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Snow Fox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+<script rel="preload" src="https://kit.fontawesome.com/e55d522acc.js" crossorigin="anonymous"></script>
+</head>
+<body class="page-foxrecipes">
+<!-- HEADER -->
+    <header class="header">
+        <section id="navbar">
+
+            <div class="nav-title">
+                <div class="main-icon"><a href="index.html"><img src="../img/main-icon.png" alt="Snow Fox app icon" height="60vw"></a></div>
+                <div class="main-title"><a href="index.html"><h1>Snow Fox</h1></a></div>
+            </div>
+
+            <div class="nav-text">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="foxrecipes.html" class="nav-active">Recipes</a></li>
+                    <li><a href="foxfavorites.html">Favorites</a></li>
+                    <li><a href="foximport.html">Import recipe</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </header>
+<!-- -->
+
+
+
+<!-- MAIN -->
+    <main>
+        <!-- SEARCH BUTTONS -->
+        <section id="searching-container">
+            <div class="recipes-content">
+                <h2 class="recipes-page-heading">Recipes</h2>
+
+                <div class="recipes-option-field">
+                    <div class="recipes-option-button">
+                        <button type="button" data-category="all" class="selected" id="all">All</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="breakfast" id="breakfast">Breakfast</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="lunch" id="lunch">Lunch</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="dinner" id="dinner">Dinner</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="desserts" id="desserts">Desserts</button>
+                    </div> 
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="bakery" id="bakery">Bakery</button>
+                    </div>
+
+                    <div class="recipes-option-button">
+                        <button type="buton" data-category="pastries" id="pastries">Pastries</button>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+
+            <!-- SEARCH BAR -->
+            <form id="search-form">
+                <div class="recipes-page-search">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="search" class="search-text" name="search-bar" id="search-bar" placeholder="Search for recipe. . ." oninput="searchRecipes()">
+                </div>
+            </form>
+            <!-- -->
+
+            <!-- RECIPE RESULTS -->
+            <div class="results-grid-container" id="results-grid-container">
+
+                <div class="recipe-item" data-id="15" data-category="desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Chocolate Chip Cookies</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="14" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Sponge Cherry Cake</h3>
+                    </div>
+                </div>
+                
+                <div class="recipe-item" data-id="13" data-category="lunch, dinner">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Czech Bacon Dumplings</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="12" data-category="lunch, dinner">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Smash Burger</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="11" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Brownies</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="10" data-category="lunch, dinner, bakery">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Stuffed Crust Pizza</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="9" data-category="bakery">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>One Hour Dough Pizza</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="8" data-category="bakery">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Ultimate Pizza Dough</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="7" data-category="breakfast, lunch">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Protain Milkshake</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="6" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Cinnamon Rolls</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="5" data-category="lunch, dinner">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Chicken Burger</h3>
+                    </div>
+                </div>
+                
+                <div class="recipe-item" data-id="4" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Banana Walnut Muffins</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="3" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Double Chocolate Muffins</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="2" data-category="breakfast, desserts, pastries">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Blueberry Muffins</h3>
+                    </div>
+                </div>
+
+                <div class="recipe-item" data-id="1" data-category="bakery">
+                    <img src="../img/1010.jpg" alt="">
+                    <div class="star-icon">
+                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    </div>
+                    <div class="recipe-linear-gradient"></div>
+                    <div class="recipe-item-text">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>3hr</p>
+                    </div>
+                    <div class="recipe-item-heading">
+                        <h3>Burger Buns</h3>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- -->
+
+        <!-- MODAL CONTAINER DETAILS -->
+        <div class="modal-container hidden" id="recipe-modal">
+            <div class="modal-content">
+                <span class="modal-close-cross" id="modal-close-cross">&#10005;</span>
+                
+                <div id="recipe-details-content">
+                    <div class="recipe-details-heading">
+                        <div class="recipe-details-heading-text">
+                            <h2>Meal name here</h2>
+                            <div class="recipe-details-cook-time">
+                                <i class="fa-regular fa-clock"></i>
+                                <p>Cook time:</p>
+                                <p>3hr</p>
+                            </div>
+                        </div>
+                        <div class="recipe-details-heading-img">
+                        <img src="../img/1010.jpg" style="width: 80%;" alt="">
+                        </div>
+                    </div>
+                    <article class="recipe-details-list">
+                        <div class="recipe-details-ingredients">
+                        <h2>Ingedients</h2>
+
+                            <ul>
+                                <li>ingredients info</li>
+                                <li>ingredients info</li>
+                                <li>ingredients info</li>
+                                <li>ingredients info</li>
+                                <li>ingredients info</li>
+                            </ul>
+                        </div>
+
+                        <div class="recipe-details-directions">
+                        <h2>Directions</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit soluta iure, laudantium, necessitatibus tempora eum ut ab quo veniam illum nulla hic, amet quos corrupti quae fugiat eius error. Ut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit soluta iure, laudantium, necessitatibus tempora eum ut ab quo veniam illum nulla hic, amet quos corrupti quae fugiat eius error. Ut?</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+
+        </section>
+
+    </main>
+<!-- -->
+
+
+
+<!-- FOOTER -->
+    <footer>
+
+        <div class="footer-text">
+            <p>&copy; 
+                <!-- -->
+                2025 
+                <!-- -->
+                <a href="#" style="color: #363636; font-weight: 400;">Filip Urbásek.</a>
+                <!-- -->
+                 All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+<!-- -->
+
+<script src="../js/search.js" defer></script>
+</body>
+</html>
