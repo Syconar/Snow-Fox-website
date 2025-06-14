@@ -64,7 +64,7 @@ main{
     text-align: center;
     align-items: center;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     background: var(--nav-background-transition);
     transition: all 0.3s;
     z-index: 999;
@@ -800,18 +800,21 @@ input{
     }
 }
 
-.recipes-option-button{
+.recipespage-option-button, 
+.favoritespage-option-button{
     margin-right: 7px;
 }
 
-.recipes-option-button button{
+.recipespage-option-button button, 
+.favoritespage-option-button button{
     font-weight: 500;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
 }
 
-.recipes-option-button button.selected{
+.recipespage-option-button button.selected,
+.favoritespage-option-button button.selected{
     background-color: var(--join-button-background);
     color: var(--nav-text-color-selected);
 }
@@ -950,27 +953,27 @@ input{
     z-index: 1;
 }
 
-.star-icon{
+.bookmark-icon{
     display: flex;
     position: absolute;
     top: 15px;
     right: 15px;
-    transform: rotate(35deg);
+    transform: rotate(10deg);
     font-size: 1.7rem;
     color: var(--nav-text-color-selected);
     opacity: 80%;
     z-index: 900;
 }
 
-.star-icon:hover{
+.bookmark-icon:hover{
     opacity: 100%;
 }
 
-.star-icon.selected{
+.bookmark-icon.selected{
     opacity: 100%;
 }
 
-.star-icon.selected:hover{
+.bookmark-icon.selected:hover{
     opacity: 80%;
 }
 

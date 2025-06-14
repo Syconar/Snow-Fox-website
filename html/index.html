@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-    <title>Snow Fox</title>
+    <title>Snow Fox | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <h2>All of your favorite recipes in the palm of your hand!</h2>
                 </div>
 
-                <form id="main-search-form">
+                <form id="main-search-form" method="get" action="foxrecipes.html?keyword=Whatever+the+user+typed+in">
                     <div class="search">
                         <span class="material-symbols-outlined">search</span>
                         <input type="text" class="search-text" name="search-bar" id="search-bar" placeholder="What recipe are you looking for?">
@@ -483,7 +483,12 @@
     <!-- -->
     
 <script src="../js/jquery-3.7.1.min.js"></script>
-<script src="../js/script.js"></script>
+<script src="../js/script.js" defer></script>
 <script src="../js/search.js" defer></script>
+
+
+
+
+
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-    <title>Snow Fox</title>
+    <title>Snow Fox | Favorites</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -45,36 +45,36 @@
                 <h2 class="recipes-page-heading">My Favorites</h2>
 
                 <div class="recipes-option-field">
-                    <div class="recipes-option-button">
+                    <div class="favoritespage-option-button">
                         <button type="button" data-category="all" class="selected">All</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="favoritespage-option-button">
                         <button type="button" data-category="imported">Imported</button>
                     </div>
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="breakfast">Breakfast</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="breakfast">Breakfast</button>
                     </div>
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="lunch">Lunch</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="lunch">Lunch</button>
                     </div>
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="dinner">Dinner</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="dinner">Dinner</button>
                     </div>
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="desserts">Desserts</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="desserts">Desserts</button>
                     </div> 
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="bakery">Bakery</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="bakery">Bakery</button>
                     </div>
 
-                    <div class="recipes-option-button">
-                        <button type="buton" data-category="pastries">Pastries</button>
+                    <div class="favoritespage-option-button">
+                        <button type="button" data-category="pastries">Pastries</button>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,11 @@
                 </div>
             </form>
 
+            <!-- FAVORITE RECIPE RESULTS -->
+            <div class="no-favorite-found" style="width: 100%;"><p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>Hmm, it looks like you don't have any favorite recipes yet.</p></div>
+            <div class="results-grid-container" id="results-grid-container">
 
+                <div class="recipe-item"></div>
 
     </main>
 <!-- -->
@@ -112,7 +116,8 @@
     </footer>
 <!-- -->
 
+<script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../js/search.js" defer></script>
-    
+<script src="../js/saved.js" defer></script>
 </body>
 </html>

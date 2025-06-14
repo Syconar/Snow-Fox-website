@@ -1,5 +1,5 @@
 // Select all recipes option buttons and its items
-const filterOptionBtn = document.querySelectorAll(".recipes-option-field .recipes-option-button");
+const filterOptionBtn = document.querySelectorAll(".recipes-option-field .recipespage-option-button");
 const filterOptionItem = document.querySelectorAll(".results-grid-container .recipe-item");
 ;
 
@@ -25,6 +25,22 @@ const filterItem = (e) => {
 filterOptionBtn.forEach(button => button.addEventListener("click", filterItem));
 // 
 
+// Save selected filter before leaving the page
+document.querySelectorAll(".recipespage-option-button button").forEach(btn => {
+  btn.addEventListener("click", function() {
+    localStorage.setItem("selectedCategory", this.dataset.category);
+  });
+});
+
+    // On page load, restore selected filter
+window.addEventListener("DOMContentLoaded", function() {
+  const savedCategory = localStorage.getItem("selectedCategory");
+  if (savedCategory) {
+    const btn = document.querySelector(`.recipespage-option-button button[data-category="${savedCategory}"]`);
+    if (btn) btn.click();
+  }
+});
+
 
 
 // Recipes searching thru letters using the search bar
@@ -32,6 +48,7 @@ function searchRecipes() {
     const searchInput = document.getElementById("search-bar");
     const searchFilter = searchInput.value.trim().toLowerCase();
     const resultItems = document.querySelectorAll(".recipe-item");
+    const noFound = document.querySelector(".no-recipe-found");
 
     resultItems.forEach(resultHeader => {
         const h3 = resultHeader.querySelector("h3");
@@ -44,7 +61,8 @@ function searchRecipes() {
         if (resultTitle.includes(searchFilter) || searchFilter === "") {
             resultHeader.style.display = "";
         } else {
-            resultHeader.style.display = "none";
+            resultHeader.style.display = "none"
+            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
         }
     });
 }
@@ -132,8 +150,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Replacing "favorite" recipe icon from unselected to selected and back
-let changeIcon = function(starIcon, event){
+let changeIcon = function(bookmarkIcon, event){
     event.stopPropagation(); // Prevents the click from bubbling up to the recipeItem
-    starIcon.classList.toggle("fa-solid");
-    starIcon.closest(".star-icon").classList.toggle("selected");// Prevents showing up popup modal
+    bookmarkIcon.classList.toggle("fa-solid");
+    bookmarkIcon.closest(".bookmark-icon").classList.toggle("selected");// Prevents showing up popup modal
 }
+const recipeItem = bookmarkIcon.closest('.recipe-item');
+    const recipeId = recipeItem.getAttribute('data-id');
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (favorites.includes(recipeId)) {
+        favorites = favorites.filter(id => id !== recipeId);
+    } else {
+        favorites.push(recipeId);
+    }
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+// 

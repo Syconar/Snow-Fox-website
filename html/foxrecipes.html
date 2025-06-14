@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-    <title>Snow Fox</title>
+    <title>Snow Fox | Recipes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -45,31 +45,31 @@
                 <h2 class="recipes-page-heading">Recipes</h2>
 
                 <div class="recipes-option-field">
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="all" class="selected" id="all">All</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="breakfast" id="breakfast">Breakfast</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="lunch" id="lunch">Lunch</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="dinner" id="dinner">Dinner</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="desserts" id="desserts">Desserts</button>
                     </div> 
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="bakery" id="bakery">Bakery</button>
                     </div>
 
-                    <div class="recipes-option-button">
+                    <div class="recipespage-option-button">
                         <button type="button" data-category="pastries" id="pastries">Pastries</button>
                     </div>
                 </div>
@@ -86,12 +86,13 @@
             <!-- -->
 
             <!-- RECIPE RESULTS -->
+            <div class="no-recipe-found" style="width: 100%;"></div>
             <div class="results-grid-container" id="results-grid-container">
 
                 <div class="recipe-item" data-id="22" data-category="lunch, dinner">
                     <img src="../img/id22pizzabbq.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -105,8 +106,8 @@
 
                 <div class="recipe-item" data-id="21" data-category="desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -120,8 +121,8 @@
 
                 <div class="recipe-item" data-id="20" data-category="desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -135,8 +136,8 @@
 
                 <div class="recipe-item" data-id="19" data-category="desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -150,8 +151,8 @@
 
                 <div class="recipe-item" data-id="18" data-category="lunch, dinner">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -165,8 +166,8 @@
 
                 <div class="recipe-item" data-id="17" data-category="lunch, dinner">
                     <img src="../img/id17pizzamushroomandonions.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -180,8 +181,8 @@
 
                 <div class="recipe-item" data-id="16" data-category="lunch, dinner">
                     <img src="../img/id16pizzaquattroformaggi.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -195,8 +196,8 @@
 
                 <div class="recipe-item" data-id="15" data-category="desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -210,8 +211,8 @@
 
                 <div class="recipe-item" data-id="14" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -225,8 +226,8 @@
                 
                 <div class="recipe-item" data-id="13" data-category="lunch, dinner">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -240,8 +241,8 @@
 
                 <div class="recipe-item" data-id="12" data-category="lunch, dinner">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -255,8 +256,8 @@
 
                 <div class="recipe-item" data-id="11" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -270,8 +271,8 @@
 
                 <div class="recipe-item" data-id="10" data-category="lunch, dinner, bakery">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -285,8 +286,8 @@
 
                 <div class="recipe-item" data-id="9" data-category="bakery">
                     <img src="../img/id9onehourdoughpizza.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -300,8 +301,8 @@
 
                 <div class="recipe-item" data-id="8" data-category="bakery">
                     <img src="../img/id8ultimatepizzadough.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -315,8 +316,8 @@
 
                 <div class="recipe-item" data-id="7" data-category="breakfast, lunch">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -330,8 +331,8 @@
 
                 <div class="recipe-item" data-id="6" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -345,8 +346,8 @@
 
                 <div class="recipe-item" data-id="5" data-category="lunch, dinner">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmarkfar fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -360,8 +361,8 @@
                 
                 <div class="recipe-item" data-id="4" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -375,8 +376,8 @@
 
                 <div class="recipe-item" data-id="3" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -390,8 +391,8 @@
 
                 <div class="recipe-item" data-id="2" data-category="breakfast, desserts, pastries">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -405,8 +406,8 @@
 
                 <div class="recipe-item" data-id="1" data-category="bakery">
                     <img src="../img/1010.jpg" alt="">
-                    <div class="star-icon">
-                        <i class="fa-regular fa-star" onclick="changeIcon(this, event)"></i>
+                    <div class="bookmark-icon">
+                        <i class="far fa-bookmark" onclick="changeIcon(this, event)"></i>
                     </div>
                     <div class="recipe-linear-gradient"></div>
                     <div class="recipe-item-text">
@@ -488,6 +489,8 @@
     </footer>
 <!-- -->
 
+<script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../js/search.js" defer></script>
+<script src="../js/saved.js" defer></script>
 </body>
 </html>
