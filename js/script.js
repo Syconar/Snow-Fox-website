@@ -22,6 +22,16 @@ window.onscroll = function(){
 
 
 
+// Search bar redirect to foxrecipes.html and automatically search/filter recipes there
+document.getElementById("main-search-form").addEventListener("submit", function(event){
+    event.preventDefault(); // This will stop normal form submission
+    const searchValue = document.getElementById("index-search-bar").value.trim(); // Using this will redirect the user to foxrecipes.html with the search term as a query parameter
+    window.location.href = `foxrecipes.html?search=${encodeURIComponent(searchValue)}`;
+});
+// 
+
+
+
 // Registration form closing with a cross
 let popupBox = document.getElementById("popup-box");
 let buttonClosed = document.getElementById("button-option");
@@ -55,7 +65,6 @@ function openSignupPopup(){
     document.querySelector(".popup").classList.add("popup-active");
     popupBox.classList.add("open-popup");
     buttonClosed.classList.remove("option-field-closed");
-    forgotBtn.style.display = "none";
     confirmPassword.required = true;
 };
 
@@ -68,7 +77,6 @@ function openLoginPopup() {
     buttonClosed.classList.remove("option-field-closed");
     submitBtn.textContent = "Log in";
     document.querySelector(".popup").classList.add("popup-active");
-    forgotBtn.style.display = "block";
     confirmPassword.required = false;
 };
 // 
@@ -83,7 +91,6 @@ signupBtn.onclick = function(){
     signupBtn.classList.add("disabled");
     loginBtn.classList.remove("disabled");
     submitBtn.textContent = "Create account";
-    forgotBtn.style.display = "none";
     confirmPassword.required = true;
 };
 
@@ -93,7 +100,6 @@ loginBtn.onclick = function(){
     loginBtn.classList.add("disabled");
     signupBtn.classList.remove("disabled");
     submitBtn.textContent = "Log in";
-    forgotBtn.style.display = "block";
     confirmPassword.required = false;
 };
 // 

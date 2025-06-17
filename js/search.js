@@ -1,3 +1,25 @@
+window.addEventListener("DOMContentLoaded", function(){
+    // Always select "All" category on load
+    const allBtn = document.querySelector('.recipespage-option-button button[data-category="all"]');
+    if (allBtn) allBtn.click();
+
+    // Always attach the input event listener!
+    const searchInput = document.getElementById("search-bar");
+    if (searchInput) {
+        searchInput.addEventListener("input", searchRecipes);
+    }
+
+    // Fill search bar from URL and trigger search
+    const searchParams = new URLSearchParams(window.location.search);
+    const searchValue = searchParams.get("search");
+    if (searchValue && searchInput) {
+        searchInput.value = searchValue;
+        setTimeout(() => {
+            searchRecipes();
+        }, 100);
+    }
+});
+
 // Select all recipes option buttons and its items
 const filterOptionBtn = document.querySelectorAll(".recipes-option-field .recipespage-option-button");
 const filterOptionItem = document.querySelectorAll(".results-grid-container .recipe-item");
@@ -12,8 +34,8 @@ const filterItem = (e) => {
 
     filterOptionItem.forEach(recipeItem => {
         const categories = recipeItem.dataset.category.toLowerCase().split(',').map(categoryItem => categoryItem.trim());
-        // Ceck if the card matches the selected filter or if "All" is selected
-        if (selectedCategory === "all" || categories.includes(selectedCategory)) {
+        // Check if the card matches the selected filter or if "All" is selected
+        if (selectedCategory === "all" || categories.includes(selectedCategory)){
             recipeItem.classList.remove("hide");
         } else {
             // Adding "hide" class to hide the items initially
@@ -25,22 +47,6 @@ const filterItem = (e) => {
 filterOptionBtn.forEach(button => button.addEventListener("click", filterItem));
 // 
 
-// Save selected filter before leaving the page
-document.querySelectorAll(".recipespage-option-button button").forEach(btn => {
-  btn.addEventListener("click", function() {
-    localStorage.setItem("selectedCategory", this.dataset.category);
-  });
-});
-
-    // On page load, restore selected filter
-window.addEventListener("DOMContentLoaded", function() {
-  const savedCategory = localStorage.getItem("selectedCategory");
-  if (savedCategory) {
-    const btn = document.querySelector(`.recipespage-option-button button[data-category="${savedCategory}"]`);
-    if (btn) btn.click();
-  }
-});
-
 
 
 // Recipes searching thru letters using the search bar
@@ -49,6 +55,7 @@ function searchRecipes() {
     const searchFilter = searchInput.value.trim().toLowerCase();
     const resultItems = document.querySelectorAll(".recipe-item");
     const noFound = document.querySelector(".no-recipe-found");
+    let anyVisible = false;
 
     resultItems.forEach(resultHeader => {
         const h3 = resultHeader.querySelector("h3");
@@ -58,20 +65,42 @@ function searchRecipes() {
         }
 
         const resultTitle = h3.textContent.trim().toLowerCase();
-        if (resultTitle.includes(searchFilter) || searchFilter === "") {
+        if (resultTitle.includes(searchFilter) || searchFilter === ""){
             resultHeader.style.display = "";
+            anyVisible = true;
         } else {
             resultHeader.style.display = "none"
-            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
         }
     });
+    if (!anyVisible){
+        noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
+    } else {
+        noFound.innerHTML = "";
+    }
 }
-//
+// 
+
+
+
+// Replacing "favorite" recipe icon from unselected to selected and back
+let changeIcon = function(bookmarkIcon, event){
+    event.stopPropagation(); // Prevents the click from bubbling up to the recipeItem
+    bookmarkIcon.classList.toggle("fa-solid");
+    bookmarkIcon.closest(".bookmark-icon").classList.toggle("selected");// Prevents showing up popup modal
+}
+const recipeItem = bookmarkIcon.closest('.recipe-item');
+    const recipeId = recipeItem.getAttribute('data-id');
+    if (favorites.includes(recipeId)) {
+        favorites = favorites.filter(id => id !== recipeId);
+    } else {
+        favorites.push(recipeId);
+    }
+// 
+
+
 
 // Picking up right recipe details using API
-document.addEventListener("DOMContentLoaded", function () {
     const modalRecipe = document.getElementById("recipe-modal");
-    const recipeItem = document.querySelectorAll(".recipe-item");
     const modalCloseBtn = document.getElementById("modal-close-cross");
     const modalContent = document.getElementById("recipe-details-content");
 
@@ -144,24 +173,4 @@ document.addEventListener("DOMContentLoaded", function () {
         targetCategoryButton.classList.add("selected");
         targetCategoryButton.click();
     }
-});
-// 
-
-
-
-// Replacing "favorite" recipe icon from unselected to selected and back
-let changeIcon = function(bookmarkIcon, event){
-    event.stopPropagation(); // Prevents the click from bubbling up to the recipeItem
-    bookmarkIcon.classList.toggle("fa-solid");
-    bookmarkIcon.closest(".bookmark-icon").classList.toggle("selected");// Prevents showing up popup modal
-}
-const recipeItem = bookmarkIcon.closest('.recipe-item');
-    const recipeId = recipeItem.getAttribute('data-id');
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (favorites.includes(recipeId)) {
-        favorites = favorites.filter(id => id !== recipeId);
-    } else {
-        favorites.push(recipeId);
-    }
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-// 
+//
