@@ -170,7 +170,3 @@ document.querySelectorAll(".fa-caret-left").forEach(LeftBtn => {
     })
 });
 //
-
-
-
-// 
