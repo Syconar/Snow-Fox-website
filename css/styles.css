@@ -240,6 +240,8 @@ a.nav-active{
 .material-symbols-outlined{
     cursor: pointer;
     color: var(--search-input-placeholder);
+    border: transparent;
+    background: transparent;
 }
 
 .material-symbols-outlined:hover,
@@ -962,20 +964,28 @@ input{
     font-size: 1.7rem;
     color: var(--nav-text-color-selected);
     opacity: 80%;
+    transition: 0.2s;
     z-index: 900;
 }
 
 .bookmark-icon:hover{
-    opacity: 100%;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 1024px){
+    .bookmark-icon {
+        transition: none !important;
+        transform: rotate(10deg) !important;
+    }
+    .bookmark-icon:hover {
+        transform: rotate(10deg) !important;
+    }
 }
 
 .bookmark-icon.selected{
     opacity: 100%;
 }
 
-.bookmark-icon.selected:hover{
-    opacity: 80%;
-}
 
 .recipe-item-heading {
     width: 100%;

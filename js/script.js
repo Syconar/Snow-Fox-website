@@ -26,7 +26,18 @@ window.onscroll = function(){
 document.getElementById("main-search-form").addEventListener("submit", function(event){
     event.preventDefault(); // This will stop normal form submission
     const searchValue = document.getElementById("index-search-bar").value.trim(); // Using this will redirect the user to foxrecipes.html with the search term as a query parameter
-    window.location.href = `foxrecipes.html?search=${encodeURIComponent(searchValue)}`;
+
+    // Search icon will function only is the search bar is not empty
+    if(!searchValue){
+        // If search input is empty, do nothing
+        event.preventDefault();
+        return;
+    } else{
+        // If search input isn't empty, redirect to foxrecipes.html
+        event.preventDefault();
+        window.location.href = `foxrecipes.html?search=${encodeURIComponent(searchValue)}`;
+    }
+    
 });
 // 
 

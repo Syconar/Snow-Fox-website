@@ -22,8 +22,40 @@ window.addEventListener("DOMContentLoaded", function(){
     filterOptionBtns.forEach(button => button.addEventListener("click", filterItem));
 
 
-    
-    /***** CATEGORY BUTTON SELECTION THROUGH index.html *****/
+
+    /***** SEARCH BAR FUNCTION ON foxrecipe.html *****/
+    // Recipes searching thru letters using the search bar
+    function searchRecipes(){
+        const searchFilter = searchInput.value.trim().toLowerCase();
+        const resultItems = document.querySelectorAll(".recipe-item");
+        const noFound = document.querySelector(".no-recipe-found");
+        let anyVisible = false;
+
+        resultItems.forEach(resultHeader => {
+            const h3 = resultHeader.querySelector("h3");
+            if (!h3){
+                resultHeader.style.display = "none";
+                return;
+            }
+
+            const resultTitle = h3.textContent.trim().toLowerCase();
+            if(resultTitle.includes(searchFilter) || searchFilter === ""){
+                resultHeader.style.display = "";
+                anyVisible = true;
+            } else{
+                resultHeader.style.display = "none"
+            }
+        });
+        if(!anyVisible){
+            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
+        } else{
+            noFound.innerHTML = "";
+        }
+    }
+
+
+
+        /***** CATEGORY BUTTON SELECTION THROUGH index.html *****/
     // Getting a link to go from index.html to specific recipe category button
     const categoryHash = window.location.hash.replace("#", "").toLowerCase();
     // Remove "selected" from all buttons
@@ -62,60 +94,14 @@ if(categoryHash){
             searchRecipes();
         }, 100);
     }
-
-
-
-    /***** SEARCH BAR FUNCTION ON foxrecipe.html *****/
-    // Recipes searching thru letters using the search bar
-    function searchRecipes(){
-        const searchFilter = searchInput.value.trim().toLowerCase();
-        const resultItems = document.querySelectorAll(".recipe-item");
-        const noFound = document.querySelector(".no-recipe-found");
-        let anyVisible = false;
-
-        resultItems.forEach(resultHeader => {
-            const h3 = resultHeader.querySelector("h3");
-            if (!h3){
-                resultHeader.style.display = "none";
-                return;
-            }
-
-            const resultTitle = h3.textContent.trim().toLowerCase();
-            if(resultTitle.includes(searchFilter) || searchFilter === ""){
-                resultHeader.style.display = "";
-                anyVisible = true;
-            } else{
-                resultHeader.style.display = "none"
-            }
-        });
-        if(!anyVisible){
-            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
-        } else{
-            noFound.innerHTML = "";
-        }
+    // Search icon functioning as a submit button
+    const searchIcon = document.getElementById("search-icon");
+    if(searchIcon && searchInput){
+        searchIcon.addEventListener("click", function(){
+            searchRecipes();
+            searchInput.focus();
+        })
     }
-
-
-
-/***** UNFINISHED *****/
-/*****            *****/
-    /***** FAVORITE RECIPE ICON SELECTION *****/ 
-    // // Replacing "favorite" recipe icon from unselected to selected and back
-    // let changeIcon = function(bookmarkIcon, event){
-    //     event.stopPropagation(); // Prevents the click from bubbling up to the recipeItem
-    //     bookmarkIcon.classList.toggle("fa-solid");
-    //     bookmarkIcon.closest(".bookmark-icon").classList.toggle("selected");// Prevents showing up popup modal
-    // };
-    // const recipeItem = bookmarkIcon.closest('.recipe-item');
-    // const recipeId = recipeItem.getAttribute('data-id');
-    //     if (favorites.includes(recipeId)) {
-    //         favorites = favorites.filter(id => id !== recipeId);
-    //     } else {
-    //         favorites.push(recipeId);
-    //     };
-// 
-/***** UNFINISHED *****/
-/*****            *****/
 
 
 
@@ -186,4 +172,46 @@ if(categoryHash){
         document.body.classList.remove("modal-open");
         document.body.style.overflow = "";
     });
+
+    /***** FAVORITE RECIPE ICON SELECTION *****/ 
+    // Get favorite recipes from localStorage
+    function getFavorites(){
+        return JSON.parse(localStorage.getItem("favorites") || "[]");
+    }
+    // Save favorite recipes to localStorage
+    function setFavorites(favorites){
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+    // Toggle favorite icon and update favorites
+    function changeIcon(bookmarkIcon, event){
+        event.stopPropagation(); // Prevents modal popup when clicking on bookmark icon
+        const recipeItem = bookmarkIcon.closest(".recipe-item");
+        const recipeId = recipeItem.getAttribute("data-id");
+        let favorites = getFavorites();
+        // Toggle icon to solid
+        bookmarkIcon.classList.toggle("fa-solid");
+        bookmarkIcon.closest(".bookmark-icon").classList.toggle("selected");
+        // This will add or remove recipe item from favorites
+        if(favorites.includes(recipeId)){
+            favorites = favorites.filter(id => id !== recipeId);
+        } else {
+            favorites.push(recipeId);
+        }
+        setFavorites(favorites);
+    }
+    // Mark favorites on page load
+    const favorites = getFavorites();
+    document.querySelectorAll(".recipe-item").forEach(item => {
+        const recipeId = item.getAttribute("data-id");
+        if (favorites.includes(recipeId)){
+            const bookmarkIconAwesomeFont = item.querySelector(".bookmark-icon i");
+            if (bookmarkIconAwesomeFont){
+                bookmarkIconAwesomeFont.classList.add("fa-solid");
+                bookmarkIconAwesomeFont.closest(".bookmark-icon").classList.add("selected");
+            }
+        }
+    });
+    // Make changeIcon globally accessible for inline onclick
+    window.changeIcon = changeIcon;
+
 });
