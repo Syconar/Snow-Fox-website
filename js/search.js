@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", function(){
-    /***** CATEGORY FILTER LOGIC ON foxrecipes.html */
+
+    /***** CATEGORY FILTER LOGIC ON foxrecipes.html *****/
     const filterOptionBtns = document.querySelectorAll(".recipes-option-field .recipespage-option-button");
     const filterOptionItems = document.querySelectorAll(".results-grid-container .recipe-item");
     // Define the filterItem by selecting buttons
@@ -55,7 +56,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
-        /***** CATEGORY BUTTON SELECTION THROUGH index.html *****/
+    /***** CATEGORY BUTTON SELECTION THROUGH index.html *****/
     // Getting a link to go from index.html to specific recipe category button
     const categoryHash = window.location.hash.replace("#", "").toLowerCase();
     // Remove "selected" from all buttons

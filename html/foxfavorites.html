@@ -84,15 +84,27 @@
             <form id="search-form" style="justify-content: start;">
                 <div class="recipes-page-search">
                     <span class="material-symbols-outlined">search</span>
-                    <input type="search" class="search-text" name="search-bar" id="search-bar" placeholder="Search for your favorite recipe. . ." oninput="searchRecipes()">
+                    <input type="search" class="search-text" name="search-bar" id="search-bar" placeholder="Search for your favorite recipe. . .">
                 </div>
             </form>
 
-            <!-- FAVORITE RECIPE RESULTS -->
-            <div class="no-favorite-found" style="width: 100%;"><p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>Hmm, it looks like you don't have any favorite recipes yet.</p></div>
-            <div class="results-grid-container" id="results-grid-container">
+            <!-- RECIPE RESULTS -->
+            <div class="no-favorite-found" style="width: 100%;"></div>
+            <div class="no-recipe-found" style="width: 100%;"></div>
+            <div class="results-grid-container" id="results-grid-container" data-saved-recipe-container>
 
-                <div class="recipe-item"></div>
+            <div class="recipe-item"></div>
+            </div>
+            <!-- -->
+
+            <!-- MODAL CONTAINER DETAILS -->
+            <div class="modal-container hidden" id="recipe-modal">
+                <div class="modal-content">
+                    <span class="modal-close-cross" id="modal-close-cross">&#10005;</span>
+                    <div id="recipe-details-content"></div>
+                </div>
+            </div>
+            <!-- -->
 
     </main>
 <!-- -->
@@ -117,7 +129,9 @@
 <!-- -->
 
 <script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/recipes-data.js"></script>
 <script src="../js/search.js" defer></script>
 <script src="../js/saved.js" defer></script>
+
 </body>
 </html>
