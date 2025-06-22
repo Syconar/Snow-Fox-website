@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", function(){
-
     /***** CATEGORY FILTER LOGIC ON foxrecipes.html *****/
     const filterOptionBtns = document.querySelectorAll(".recipes-option-field .recipespage-option-button");
     const filterOptionItems = document.querySelectorAll(".results-grid-container .recipe-item");
@@ -81,7 +80,7 @@ if(categoryHash){
 
     /***** SEARCHING RECIPES THROUGH index.html *****/
     // Always attach the input event listener!
-    const searchInput = document.getElementById("search-bar");
+    const searchInput = document.getElementById("search-bar"); // Using this the search bar's event listener will be attach to the search input
     if(searchInput) {
         searchInput.addEventListener("input", searchRecipes);
     }

@@ -63,26 +63,61 @@ window.addEventListener("DOMContentLoaded", function() {
             });
             /***** MODAL POPUP WINDOW  *****/
             // Attach modal popup event to specific recipe-item
+            const modalRecipeData = window.allModalRecipes.find(r => r.idMeal === recipe.id);
+            if (!modalRecipeData) {
+                console.warn("No modal data for recipe id found:", recipe.id, recipe.title);
+                return
+            }
+            // Collect all non-empty ingredients
+            const ingredients = [];
+            for (let i = 1; i <= 20; i++) {
+                const ing = modalRecipeData[`strIngredient${i}`];
+                if (ing && ing.trim() !== "") {
+                    ingredients.push(ing);
+                }
+            }
             div.addEventListener("click", function(event) {
                 // Find the modal recipe and prevent modal to shows up, if used click the bookmark icon
                 if(event.target.closest(".bookmark-icon")) return;
                 const modalContent = document.getElementById("recipe-details-content");
                     // Fill modal content after click on the recipe item and allow it to show up
                     modalContent.innerHTML = `
-                        <h2>${recipe.title}</h2>
-                        <img src="${recipe.image}" style="width: 80%;" alt="">
-                        <h4>Category: ${recipe.category}</h4>
-                        <h4>Cook time: ${recipe.cookingTime}</h4>
-                        `;
+                        <h2>${modalRecipeData.strMeal}</h2>
+                        <img src="${modalRecipeData.strMealThumb}" alt="">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
+                        </ul>
+                        <h3>Directions</h3>
+                        <p>${modalRecipeData.strInstructions}</p>
+                    `;
 
                     const modalRecipe = document.getElementById("recipe-modal");
                     modalRecipe.classList.remove("hidden");
                     document.body.classList.add("modal-open");
                     document.body.style.overflow = "hidden";
+
+                    // Modal will close when clicking on background
+                    modalRecipe.addEventListener("click", function(event){
+                        if (event.target === modalRecipe) {
+                            modalRecipe.classList.add("hidden");
+                            document.body.classList.remove("modal-open");
+                            document.body.style.overflow = "";
+                        }  
+                    });
+                    // Button for closing modal
+                    const modalCloseBtn = document.getElementById("modal-close-cross");
+                    modalCloseBtn.addEventListener("click", function(){
+                        modalRecipe.classList.add("hidden");
+                        document.body.classList.remove("modal-open");
+                        document.body.style.overflow = "";
+                    });
             });
-                    containerRecipes.appendChild(div);
+                containerRecipes.appendChild(div);  
         });
     }
+    
+    
 
     /***** CATEGORY FILTER LOGIC ON foxfavorites.html *****/
     const filterOptionBtns = document.querySelectorAll(".recipes-option-field .favoritespage-option-button");
@@ -110,5 +145,40 @@ window.addEventListener("DOMContentLoaded", function() {
     const allBtn = document.querySelector('.favoritespage-option-button button[data-category="all"]');
     if (allBtn) {
     allBtn.classList.add("selected");
+    }
+
+    /***** SEARCH BAR FUNCTION ON foxrecipe.html *****/
+    // Recipes searching thru letters using the search bar
+    function searchRecipes(){
+        const searchFilter = searchInput.value.trim().toLowerCase();
+        const resultItems = document.querySelectorAll(".recipe-item");
+        const noFound = document.querySelector(".no-recipe-found");
+        let anyVisible = false;
+
+        resultItems.forEach(resultHeader => {
+            const h3 = resultHeader.querySelector("h3");
+            if (!h3){
+                resultHeader.style.display = "none";
+                return;
+            }
+
+            const resultTitle = h3.textContent.trim().toLowerCase();
+            if(resultTitle.includes(searchFilter) || searchFilter === ""){
+                resultHeader.style.display = "";
+                anyVisible = true;
+            } else{
+                resultHeader.style.display = "none"
+            }
+        });
+        if(!anyVisible && noFavorite.innerHTML.trim() === ""){
+            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
+        } else{
+            noFound.innerHTML = "";
+        }
+    }
+    // Always attach the input event listener!
+    const searchInput = document.getElementById("search-bar");
+    if (searchInput) {
+    searchInput.addEventListener("input", searchRecipes);
     }
 });
