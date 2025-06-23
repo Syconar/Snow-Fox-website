@@ -1271,6 +1271,29 @@ input{
 
 
 
+/***** HEADER - IMPORT *****/
+
+.page-foximport #navbar{
+    background: var(--nav-background-transition) !important;
+}
+
+.page-foximport .main-title a{
+    color: var(--nav-text-color-transition) !important;
+}
+
+.page-foximport .nav-text a:hover,
+.page-foximport .nav-text a:active{
+    color: var(--nav-text-color-transition) !important;
+}
+
+.page-foximport a.nav-active{
+    color: var(--nav-text-color-transition) !important;
+}
+
+/* */
+
+
+
 /***** IMPORT RECIPE WINDOW - IMPORT *****/
 .recipe-import-section{
     width: 100%;

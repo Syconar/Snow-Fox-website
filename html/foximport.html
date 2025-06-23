@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
 <script rel="preload" src="https://kit.fontawesome.com/e55d522acc.js" crossorigin="anonymous"></script>
 </head>
-<body class="page-foxfavorites">
+<body class="page-foximport">
 <!-- HEADER -->
     <header class="header">
         <nav id="navbar">
@@ -43,7 +43,7 @@
                     <h3 class="upload-heading">Recipe Data</h3>
                     <div class="upload-recipe-name">
                         <label>Recipe Name</label>
-                        <input type="text" name="title" placeholder="Title" required="upload-recipe-name">
+                        <input type="text" name="title" placeholder="Title" required>
                     </div>
                     <div class="upload-recipe-time">
                         <label>Cook time</label>
@@ -67,17 +67,16 @@
 
                 <div class="upload-column">
                     <h3 class="upload-heading">Ingredients</h3>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                    <label hidden>Ingredients</label>
+                    <input type="text" placeholder="ingredient">
+                    <input type="text" placeholder="ingredient">
+                    <input type="text" placeholder="ingredient">
                 </div>
 
                 <div class="upload-column">
                     <h3 class="upload-heading">Directions</h3>
                     <label hidden>Directions</label>
-                    <textarea name="" id="" cols="50" rows="10" placeholder="Lorem ipsum ..."></textarea></label>
+                    <textarea name="" id="" cols="50" rows="10" placeholder="Lorem ipsum ..."></textarea>
 
                 </div>
             </div>

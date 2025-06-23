@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", function() {
             // Collect all non-empty ingredients
             const ingredients = [];
             for (let i = 1; i <= 20; i++) {
-                const ing = modalRecipeData[`strIngredient${i}`];
+                const ing = modalRecipeData[`modIngredient${i}`];
                 if (ing && ing.trim() !== "") {
                     ingredients.push(ing);
                 }
@@ -82,14 +82,15 @@ window.addEventListener("DOMContentLoaded", function() {
                 const modalContent = document.getElementById("recipe-details-content");
                     // Fill modal content after click on the recipe item and allow it to show up
                     modalContent.innerHTML = `
-                        <h2>${modalRecipeData.strMeal}</h2>
-                        <img src="${modalRecipeData.strMealThumb}" alt="">
+                        <h2>${modalRecipeData.modMeal}</h2>
+                        <p>${modalRecipeData.modTime}</p>
+                        <img src="${modalRecipeData.modMealThumb}" alt="">
                         <h4>Ingredients</h4>
                         <ul>
                             ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
                         </ul>
                         <h3>Directions</h3>
-                        <p>${modalRecipeData.strInstructions}</p>
+                        <p>${modalRecipeData.modInmoductions}</p>
                     `;
 
                     const modalRecipe = document.getElementById("recipe-modal");
@@ -181,4 +182,6 @@ window.addEventListener("DOMContentLoaded", function() {
     if (searchInput) {
     searchInput.addEventListener("input", searchRecipes);
     }
+
+    
 });
