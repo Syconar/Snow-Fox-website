@@ -155,6 +155,17 @@ window.addEventListener("DOMContentLoaded", function() {
                 <div class="recipe-item-heading">
                     <h3>${recipe.title}</h3>
                 </div>`;
+
+            // Trash click event for deleting the imported recipes
+            divImported.querySelector(".trash-icon").addEventListener("click", function(event) {
+                event.stopPropagation();
+                const recipeId = this.dataset.recipeId;
+                const confirmRemove = window.confirm(`Are you sure you want to remove this recipe? It will be lost forever!`);
+                if (confirmRemove === true) {
+                    deleteImportedRecipe(recipeId);
+                }
+            });
+            
             // Corresponding modal for imported recipes
             divImported.addEventListener("click", function(event) {
                 if(event.target.closest(".trash-icon")) return;
@@ -174,6 +185,7 @@ window.addEventListener("DOMContentLoaded", function() {
                     <h3>Directions</h3>
                     <p>${recipe.directions}</p>
                     `;
+
                 const modalRecipe = document.getElementById("recipe-modal");
                 modalRecipe.classList.remove("hidden");
                 document.body.classList.add("modal-open");
@@ -195,6 +207,14 @@ window.addEventListener("DOMContentLoaded", function() {
             containerRecipes.appendChild(divImported);
         });
     }
+
+    function deleteImportedRecipe(recipeId) {
+  let importedRecipes = JSON.parse(localStorage.getItem("importedRecipes") || "[]");
+  importedRecipes = importedRecipes.filter(r => r.id !== recipeId);
+  localStorage.setItem("importedRecipes", JSON.stringify(importedRecipes));
+  // Optionally re-render your recipes list here
+  renderImported();
+}
 
     /***** CATEGORY FILTER LOGIC ON foxfavorites.html *****/
     const filterOptionBtns = document.querySelectorAll(".recipes-option-field .favoritespage-option-button");
