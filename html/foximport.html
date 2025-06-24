@@ -42,11 +42,11 @@
                 <div class="upload-column">
                     <h3 class="upload-heading">Recipe Data</h3>
                     <div class="upload-recipe-name">
-                        <label>Recipe Name</label>
+                        <label>Recipe Name:</label>
                         <input type="text" name="title" placeholder="Title" required>
                     </div>
                     <div class="upload-recipe-time">
-                        <label>Cook time</label>
+                        <label>Cook time:</label>
                         <input type="text" name="time" placeholder="Time of the preparation & cooking" required>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         <label for="input-file" id="drop-area">
                             <input type="file" accept="image/*" id="input-file" hidden>
                             <div id="img-view">
-                                <img src="../img/webicons/upload-recipe-icon.png">
+                                <img src="../img/webicons/upload-recipe-icon.png" alt="Upload icon">
                                 <p>Drag and drop or click here<br>to upload image</p>
                                 <span>Upload any image from desktop</span>
                             </div>
@@ -68,15 +68,15 @@
                 <div class="upload-column">
                     <h3 class="upload-heading">Ingredients</h3>
                     <label hidden>Ingredients</label>
-                    <input type="text" placeholder="ingredient">
-                    <input type="text" placeholder="ingredient">
-                    <input type="text" placeholder="ingredient">
+                    <input type="text" placeholder="ingredient, grams, tbsp, etc.">
+                    <input type="text" placeholder="ingredient, grams, tbsp, etc.">
+                    <input type="text" placeholder="ingredient, grams, tbsp, etc.">
                 </div>
 
                 <div class="upload-column">
                     <h3 class="upload-heading">Directions</h3>
                     <label hidden>Directions</label>
-                    <textarea name="" id="" cols="50" rows="10" placeholder="Lorem ipsum ..."></textarea>
+                    <textarea name="directions" class="import-textarea" rows="10" placeholder="Lorem ipsum ..."></textarea>
 
                 </div>
             </div>
@@ -107,7 +107,7 @@
     </footer>
 <!-- -->
 
-<script src="../js/import.js"></script>
+<script src="../js/import.js" defer></script>
     
 </body>
 </html>

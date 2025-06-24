@@ -20,7 +20,7 @@ dropArea.addEventListener("dragover", function(event){
 });
 dropArea.addEventListener("drop", function(event){
     event.preventDefault();
-    inputFile.files = e.dataTransfer.files;
+    inputFile.files = event.dataTransfer.files;
     uploadImage();
 });
 
@@ -29,7 +29,7 @@ document.querySelector(".upload-window").addEventListener("submit", function(eve
     // Getting form info values
     const title = this.querySelector('input[name="title"]').value;
     const time = this.querySelector('input[name="time"]').value;
-    const ingredinets = Array.from(this.querySelectorAll('input[placeholder="ingredient"]')).map(i => i.value).filter(Boolean);
+    const ingredients = Array.from(this.querySelectorAll('input[placeholder="ingredient"]')).map(i => i.value).filter(Boolean);
     const directions = this.querySelector('textarea').value;
     // Handle image as abse64
     const baseFileInput = document.getElementById('input-file');
@@ -51,7 +51,7 @@ document.querySelector(".upload-window").addEventListener("submit", function(eve
             id: 'imported-' + Date.now(),
             title,
             cookingTime: time,
-            ingredinets,
+            ingredients,
             directions,
             image,
             category: 'imported'
