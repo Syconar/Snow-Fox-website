@@ -188,7 +188,7 @@ window.addEventListener("DOMContentLoaded", function() {
                     <img src="${recipe.image}" style="width: 80%;" alt="">
                     <h4>Ingredients</h4>
                     <ul>
-                        ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                        ${(recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('')}
                     </ul>
                     <h3>Directions</h3>
                     <p>${recipe.directions}</p>
