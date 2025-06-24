@@ -42,9 +42,10 @@ window.addEventListener("DOMContentLoaded", function() {
             noFavorite.innerHTML = "<p style='display: flex;justify-content: center; padding-top: 50px; align-items: flex-start; font-style: italic; opacity: 0.6; cursor: default'>Hmm, it looks like you don't have any favorite recipes yet.</p>";
             noRecipe.innerHTML = "";
             return;
+        } else {
+            noFavorite.innerHTML = "";
+            noRecipe.innerHTML = "";
         }
-        noFavorite.innerHTML = "";
-        noRecipe.innerHTML = "";
         favoriteRecipes.forEach(recipe => {
             const div = document.createElement("div");
             div.className = "recipe-item";
@@ -130,13 +131,20 @@ window.addEventListener("DOMContentLoaded", function() {
     function getImportedRecipes() {
         return JSON.parse(localStorage.getItem("importedRecipes") || "[]");
     }
+    const noImported = document.querySelector(".no-imported-found");
     // Render imported recipes
     function renderImported() {
         containerRecipes.innerHTML = "";
         const importedRecipes = getImportedRecipes();
         if (importedRecipes.length === 0) {
-            containerRecipes.innerHTML = "<p style='padding: 2rem; opacity: 0.6;'>No imported recipes yet.</p>";
+            noImported.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>You don't have any imported recipes.</p>";
+            noFavorite.innerHTML = "";
+            noRecipe.innerHTML ="";
             return;
+        } else {
+            noImported.innerHTML = "";
+            noFavorite.innerHTML = "";
+            noRecipe.innerHTML = "";
         }
         importedRecipes.forEach(recipe => {
             const divImported = document.createElement("div");
@@ -209,39 +217,44 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 
     function deleteImportedRecipe(recipeId) {
-  let importedRecipes = JSON.parse(localStorage.getItem("importedRecipes") || "[]");
-  importedRecipes = importedRecipes.filter(r => r.id !== recipeId);
-  localStorage.setItem("importedRecipes", JSON.stringify(importedRecipes));
-  // Optionally re-render your recipes list here
-  renderImported();
-}
+        let importedRecipes = JSON.parse(localStorage.getItem("importedRecipes") || "[]");
+        importedRecipes = importedRecipes.filter(r => r.id !== recipeId);
+        localStorage.setItem("importedRecipes", JSON.stringify(importedRecipes));
+        // Optionally re-render your recipes list here
+        renderImported();
+    }
 
     /***** CATEGORY FILTER LOGIC ON foxfavorites.html *****/
     const filterOptionBtns = document.querySelectorAll(".recipes-option-field .favoritespage-option-button");
     // Define the filterItem by selecting buttons
     filterOptionBtns.forEach(button => {
-    button.addEventListener("click", function(event) {
-        // Remove "selected" from all, add to clicked
-        filterOptionBtns.forEach(btn => btn.querySelector('button').classList.remove("selected"));
-        button.querySelector('button').classList.add("selected");
-        const selectedCategory = button.querySelector('button').dataset.category.toLowerCase();
-        if (selectedCategory === "imported") {
-            renderImported();
-        } else {
-            renderFavorites();
-            // Hide all non-matching categories unless "all" is selected
-            const recipeItems = containerRecipes.querySelectorAll(".recipe-item");
-            recipeItems.forEach(item => {
-                const categories = item.getAttribute("data-category").toLowerCase().split(',').map(c => c.trim());
-                if (selectedCategory === "all" || categories.includes(selectedCategory)) {
-                    item.classList.remove("hide");
-                } else { // Hide all non-matching categories
-                    item.classList.add("hide");
-                }
-            });
-        }
+        button.addEventListener("click", function(event) {
+            // Remove "selected" from all, add to clicked
+            filterOptionBtns.forEach(btn => btn.querySelector('button').classList.remove("selected"));
+            button.querySelector('button').classList.add("selected");
+            const selectedCategory = button.querySelector('button').dataset.category.toLowerCase();
+
+            // Let the no-imported-found messega to be visible only when "Imported" btn is selected
+            const noImported = document.querySelector(".no-imported-found");
+            if (noImported) noImported.innerHTML = "";
+
+            if (selectedCategory === "imported") {
+                renderImported();
+            } else {
+                renderFavorites();
+                // Hide all non-matching categories unless "all" is selected
+                const recipeItems = containerRecipes.querySelectorAll(".recipe-item");
+                recipeItems.forEach(item => {
+                    const categories = item.getAttribute("data-category").toLowerCase().split(',').map(c => c.trim());
+                    if (selectedCategory === "all" || categories.includes(selectedCategory)) {
+                        item.classList.remove("hide");
+                    } else { // Hide all non-matching categories
+                        item.classList.add("hide");
+                    }
+                });
+            }
+        });
     });
-});
 
     // Set the "All" button as selected when the page gets load
     const allBtn = document.querySelector('.favoritespage-option-button button[data-category="all"]');
@@ -257,7 +270,7 @@ window.addEventListener("DOMContentLoaded", function() {
         if (!searchInput) return;
         const searchFilter = searchInput.value.trim().toLowerCase();
         const resultItems = document.querySelectorAll(".recipe-item");
-        const noFound = document.querySelector(".no-recipe-found");
+        const noRecipe = document.querySelector(".no-recipe-found");
         let anyVisible = false;
 
         resultItems.forEach(resultHeader => {
@@ -275,10 +288,10 @@ window.addEventListener("DOMContentLoaded", function() {
                 resultHeader.style.display = "none"
             }
         });
-        if(!anyVisible && noFavorite.innerHTML.trim() === ""){
-            noFound.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
+        if(!anyVisible && noFavorite.innerHTML.trim() === "" && noImported.innerHTML.trim() === "") {
+            noRecipe.innerHTML = "<p style='display: flex;justify-content: center;padding-top: 50px;align-items: flex-start;font-style: italic;opacity: 0.6; cursor: default'>No recipes found</p>";
         } else{
-            noFound.innerHTML = "";
+            noRecipe.innerHTML = "";
         }
     }
     // Always attach the input event listener!

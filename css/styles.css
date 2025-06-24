@@ -861,7 +861,7 @@ input{
 }
 
 .recipes-page-search:focus-within{
-    outline: 2px solid var(--join-button-background);
+    outline: 2px solid var(--join-button-background-before);
     box-shadow: 0 0 0 3px rgba(20, 117, 228, 0.2);
     transition: 30ms;
 }
