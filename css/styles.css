@@ -41,9 +41,35 @@ body{
     flex-direction: column;
 }
 
+.site{
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+}
+
 main{
     flex: 1 0 auto;
     min-height: 100vh;
+}
+
+.page-foximport main {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .page-foximport main {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 412px) {
+    .page-foximport main {
+        padding-top: 70px;
+    }
 }
 
 /***** HEADER - HOME *****/
@@ -1340,11 +1366,12 @@ input{
 /***** IMPORT RECIPE WINDOW - IMPORT *****/
 .recipe-import-section{
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 16px;
 }
 
 .upload-window{
@@ -1353,6 +1380,7 @@ input{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
 }
 
 .upload-grid{
