@@ -24,12 +24,33 @@ dropArea.addEventListener("drop", function(event){
     uploadImage();
 });
 
+// Adding new ingredient inputs if needed
+const ingContainer = document.getElementById("ingredients-container");
+function addIngredientInputIfNeeded() {
+    const ingInputs = ingContainer.querySelectorAll(".ingredient-input");
+    // Only add a new input if all current ones have a value
+    const allInputsFilled = Array.from(ingInputs).every(input => input.value.trim() !== "");
+    if (allInputsFilled && ingInputs.length < 40) {// Setting the largest number of inputs
+        const newInput = document.createElement("input");
+        newInput.type = "text";
+        newInput.className = "ingredient-input";
+        newInput.placeholder = "ingredient, grams, tbsp, etc.";
+        newInput.addEventListener("input", addIngredientInputIfNeeded);
+        ingContainer.appendChild(newInput);
+    }
+}
+    // Attach the new input event to all initial inputs
+    ingContainer.querySelectorAll(".ingredient-input").forEach(input => {
+        input.addEventListener("input", addIngredientInputIfNeeded);
+    });
+
+
 /***** IMPORTING THE RECIPE *****/
 document.querySelector(".upload-window").addEventListener("submit", function(event){
     // Getting form info values
     const title = this.querySelector('input[name="title"]').value;
     const time = this.querySelector('input[name="time"]').value;
-    const ingredients = Array.from(this.querySelectorAll('input[placeholder="ingredient"]')).map(i => i.value).filter(Boolean);
+    const ingredients = Array.from(this.querySelectorAll(".ingredient-input")).map(i => i.value).filter(Boolean);
     const directions = this.querySelector('textarea').value;
     // Handle image as abse64
     const baseFileInput = document.getElementById('input-file');

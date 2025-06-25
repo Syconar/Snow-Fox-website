@@ -109,9 +109,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         <article class="recipe-details-list">
                         <div class="recipe-details-ingredients">
                             <h4>Ingredients</h4>
-                            <ul>
-                                ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
-                            </ul>
+                            ${ingredients.map(ing => `<p>${ing}</p>`).join('')}
                         </div>
 
                         <div class="recipe-details-directions">
@@ -219,9 +217,7 @@ window.addEventListener("DOMContentLoaded", function() {
                     <article class="recipe-details-list">
                     <div class="recipe-details-ingredients">
                         <h4>Ingredients</h4>
-                        <ul>
-                            ${(recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('')}
-                        </ul>
+                        ${(recipe.ingredients || []).map(ing => `<p>${ing}</p>`).join('')}
                     </div>
 
                     <div class="recipe-details-directions">
