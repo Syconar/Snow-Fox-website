@@ -90,15 +90,36 @@ window.addEventListener("DOMContentLoaded", function() {
                 const modalContent = document.getElementById("recipe-details-content");
                     // Fill modal content after click on the recipe item and allow it to show up
                     modalContent.innerHTML = `
-                        <h2>${modalRecipeData.modMeal}</h2>
-                        <p>${modalRecipeData.modTime}</p>
-                        <img src="${modalRecipeData.modMealThumb}" alt="">
-                        <h4>Ingredients</h4>
-                        <ul>
-                            ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
-                        </ul>
-                        <h3>Directions</h3>
-                        <p>${modalRecipeData.modInmoductions}</p>
+                    <div id="recipe-details-content">
+                        <div class="recipe-details-heading">
+                            <div class="recipe-details-heading-text">
+                                <h2>${modalRecipeData.modMeal}</h2>
+                                <div class="recipe-details-cook-time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Cook time:</p>
+                                    <p>${modalRecipeData.modTime}</p>
+                                </div>
+                            </div>
+
+                            <div class="recipe-details-heading-img">
+                                <img src="${modalRecipeData.modMealThumb}" alt="">
+                            </div>
+                        </div>
+
+                        <article class="recipe-details-list">
+                        <div class="recipe-details-ingredients">
+                            <h4>Ingredients</h4>
+                            <ul>
+                                ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="recipe-details-directions">
+                            <h3>Directions</h3>
+                            <p>${modalRecipeData.modInmoductions}</p>
+                        </div>
+                        </article>
+                    </div>
                     `;
 
                     const modalRecipe = document.getElementById("recipe-modal");
@@ -179,19 +200,36 @@ window.addEventListener("DOMContentLoaded", function() {
                 if(event.target.closest(".trash-icon")) return;
                 const modalContent = document.getElementById("recipe-details-content");
                 modalContent.innerHTML = `
-                <h2>${recipe.title}</h2>
-                    <div class="recipe-details-cook-time">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>Cook time:</p>
-                        <p>${recipe.cookingTime}</p>
+                <div id="recipe-details-content">
+                    <div class="recipe-details-heading">
+                        <div class="recipe-details-heading-text">
+                            <h2>${recipe.title}</h2>
+                            <div class="recipe-details-cook-time">
+                                <i class="fa-regular fa-clock"></i>
+                                <p>Cook time:</p>
+                                <p>${recipe.cookingTime}</p>
+                            </div>
+                        </div>
+
+                        <div class="recipe-details-heading-img">
+                            <img src="${recipe.image}" style="width: 80%;" alt="">
+                        </div>
                     </div>
-                    <img src="${recipe.image}" style="width: 80%;" alt="">
-                    <h4>Ingredients</h4>
-                    <ul>
-                        ${(recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('')}
-                    </ul>
-                    <h3>Directions</h3>
-                    <p>${recipe.directions}</p>
+
+                    <article class="recipe-details-list">
+                    <div class="recipe-details-ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            ${(recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="recipe-details-directions">
+                        <h3>Directions</h3>
+                        <p>${recipe.directions}</p>
+                    </div>
+                    </article>
+                </div>
                     `;
 
                 const modalRecipe = document.getElementById("recipe-modal");

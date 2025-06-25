@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", function(){
         } else{
             noFound.innerHTML = "";
         }
-    }
+    };
 
 
 
@@ -103,76 +103,6 @@ if(categoryHash){
         })
     }
 
-
-
-    /***** MODAL POPUP WINDOW  *****/
-    // Picking up right recipe details using API
-    const modalRecipe = document.getElementById("recipe-modal");
-    const modalCloseBtn = document.getElementById("modal-close-cross");
-    const modalContent = document.getElementById("recipe-details-content");
-    let mealsData = [];
-
-    // Picking up right recipe details using db.json API
-    fetch("http://localhost:3000/meals")
-    .then(Response => Response.json())
-    .then(data => {
-        if (Array.isArray(data)) {
-            mealsData = data;
-        } else if (data.meals) {
-            mealsData = data.meals;
-        } else {
-            mealsData = [];
-        }
-        // console.log("Loaded meals:", mealsData)
-    });
-
-    // Modal will close when clicking on background
-    modalRecipe.addEventListener("click", function(event){
-        if (event.target === modalRecipe) {
-            modalRecipe.classList.add("hidden");
-            document.body.classList.remove("modal-open");
-            document.body.style.overflow = "";
-        }
-    });
-
-    // Modal will popup on clicking the recipe
-    document.querySelectorAll('.recipe-item').forEach(item => {
-        item.addEventListener("click", function(event) {
-            // Prevent modal if clicking the bookmark icon
-            if(event.target.closest('.bookmark-icon')) return;
-            const recipeId = item.getAttribute("data-id");
-            const meal = mealsData.find(m => m.idMeal === recipeId);
-            if (meal){
-                let ingredients = [];
-                for (let i = 1; i <= 20; i++) {
-                    const ing = meal[`strIngredient${i}`];
-                    if (ing && ing.trim() !== ""){
-                        ingredients.push(ing);
-                    }
-                }
-                modalContent.innerHTML = `
-                    <h2>${meal.strMeal}</h2>
-                    <img src="../img/1010.jpg" style="width: 80%;" alt="">
-                    <h4>Ingredients</h4>
-                    <ul>
-                        ${ingredients.map(ing => `<li>${ing}</li>`).join('')}
-                    </ul>
-                    <h3>Directions</h3>
-                    <p>${meal.strInstructions}</p>
-                    `;
-            }
-            modalRecipe.classList.remove("hidden");
-            document.body.classList.add("modal-open")
-            document.body.style.overflow = "hidden";
-        });
-    });
-    // Button for closing modal
-    modalCloseBtn.addEventListener("click", function(){
-        modalRecipe.classList.add("hidden");
-        document.body.classList.remove("modal-open");
-        document.body.style.overflow = "";
-    });
-
     /***** FAVORITE RECIPE ICON SELECTION *****/ 
     // Get favorite recipes from localStorage
     function getFavorites(){
@@ -214,4 +144,80 @@ if(categoryHash){
     // Make changeIcon globally accessible for inline onclick
     window.changeIcon = changeIcon;
 
+    /***** MODAL POPUP WINDOW  *****/
+    // Attach modal popup event to specific recipe-item
+    document.querySelectorAll(".recipe-item").forEach(div => {
+        div.addEventListener("click", function(event) {
+            // Find the modal recipe and prevent modal to shows up, if used click the bookmark icon
+            if (event.target.closest(".bookmark-icon")) return;
+            const recipeId = div.getAttribute("data-id");
+            const modalRecipeData = window.allModalRecipes.find(r => r.idMeal === recipeId);
+            if (!modalRecipeData) {
+                console.warn("No modal data for recipe id found:", recipeId);
+                return;
+            }
+            // Collect all non-empty ingredients
+            const ingredients = [];
+            for (let i = 1; i <= 20; i++) {
+                const ing = modalRecipeData[`modIngredient${i}`];
+                if (ing && ing.trim() !== "") {
+                    ingredients.push(ing);
+                }
+            }
+            const modalContent = document.getElementById("recipe-details-content");
+            // Fill modal content after click on the recipe item and allow it to show up
+            modalContent.innerHTML = `
+                <div id="recipe-details-content">
+                    <div class="recipe-details-heading">
+                        <div class="recipe-details-heading-text">
+                            <h2>${modalRecipeData.modMeal}</h2>
+                            <div class="recipe-details-cook-time">
+                                <i class="fa-regular fa-clock"></i>
+                                <p>Cook time:</p>
+                                <p>${modalRecipeData.modTime}</p>
+                            </div>
+                        </div>
+
+                        <div class="recipe-details-heading-img">
+                            <img src="${modalRecipeData.modMealThumb}" alt="">
+                        </div>
+                    </div>
+
+                    <article class="recipe-details-list">
+                    <div class="recipe-details-ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            ${ingredients.map(ing => `<li style= "list-style: none;">${ing}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="recipe-details-directions">
+                        <h3>Directions</h3>
+                        <p>${modalRecipeData.modInmoductions}</p>
+                    </div>
+                    </article>
+                </div>
+                `;
+            const modalRecipe = document.getElementById("recipe-modal");
+            modalRecipe.classList.remove("hidden");
+            document.body.classList.add("modal-open");
+            document.body.style.overflow = "hidden";
+
+            // Modal will close when clicking on background
+            modalRecipe.addEventListener("click", function(event){
+                if (event.target === modalRecipe) {
+                    modalRecipe.classList.add("hidden");
+                    document.body.classList.remove("modal-open");
+                    document.body.style.overflow = "";
+                }  
+            });
+            // Button for closing modal
+            const modalCloseBtn = document.getElementById("modal-close-cross");
+            modalCloseBtn.addEventListener("click", function(){
+                modalRecipe.classList.add("hidden");
+                document.body.classList.remove("modal-open");
+                document.body.style.overflow = "";
+            });
+        });
+    });
 });
