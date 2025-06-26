@@ -58,8 +58,8 @@ window.allRecipes = [
 {
     id: "14",
     title: "Sponge Cherry Cake",
-    image: "../img/noimgfound.jpg",
-    cookingTime: "3h",
+    image: "../img/id14spongecherrycake.jpg",
+    cookingTime: "1h",
     category: "breakfast, desserts, pastries"
 },
 {
