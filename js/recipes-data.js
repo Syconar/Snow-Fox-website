@@ -30,7 +30,7 @@ window.allRecipes = [
 {
     id: "18",
     title: "Japanese Style Curry",
-    image: "../img/noimgfound.jpg",
+    image: "../img/id18japanesestylecurry.jpg",
     cookingTime: "3h",
     category: "lunch, dinner"
 },
@@ -128,14 +128,14 @@ window.allRecipes = [
 {
     id: "4",
     title: "Banana Walnut Muffins",
-    image: "../img/noimgfound.jpg",
+    image: "../img/id4bananawalnutmuffins.jpg",
     cookingTime: "3h",
     category: "breakfast, desserts, pastries"
 },
 {
     id: "3",
     title: "Double Chocolate Muffins",
-    image: "../img/noimgfound.jpg",
+    image: "../img/id3doublechocolatemuffins.jpg",
     cookingTime: "3h",
     category: "breakfast, desserts, pastries"
 },
