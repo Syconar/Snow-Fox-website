@@ -72,7 +72,7 @@ window.allRecipes = [
 {
     id: "12",
     title: "Smash Burger",
-    image: "../img/noimgfound.jpg",
+    image: "../img/id12smashburger.jpg",
     cookingTime: "3h",
     category: "lunch, dinner"
 },
@@ -149,7 +149,7 @@ window.allRecipes = [
 {
     id: "1",
     title: "Burger Buns",
-    image: "../img/noimgfound.jpg",
+    image: "../img/id1burgerbuns.jpg",
     cookingTime: "3h",
     category: "bakery"
 }
