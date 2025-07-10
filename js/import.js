@@ -54,7 +54,7 @@ document.querySelector(".upload-window").addEventListener("submit", function(eve
     const directions = this.querySelector('textarea').value;
     // Handle image as abse64
     const baseFileInput = document.getElementById('input-file');
-    let image = "../img/noimgfound.jpg";
+    let image = "img/noimgfound.jpg";
     if (baseFileInput.files && baseFileInput.files[0]){
         const baseReader = new FileReader();
         baseReader.onload = function(event){
@@ -79,7 +79,7 @@ document.querySelector(".upload-window").addEventListener("submit", function(eve
         });
         localStorage.setItem('importedRecipes', JSON.stringify(importedRecipes));
         alert("Recipe imported! Great job! You can find it in Favorites > Imported.");
-        // Closing the alert will send user to foxfavorites.html (It's optional, but I wanted to be ignored by JavaScript for now)
+        // Closing the alert will send user to foxfavorites.html (It's optional, and I wanted to be ignored by JavaScript for now)
         window.location.href = "foxfavorites.html";
     }
 });

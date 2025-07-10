@@ -221,7 +221,7 @@ a.nav-active{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url(../img/background/background_food.png), linear-gradient(
+    background: url(img/background/background_food.png), linear-gradient(
         #09222b 0%,
         #000000 100%);
     background-repeat: no-repeat;
