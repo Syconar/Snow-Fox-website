@@ -86,7 +86,7 @@ window.allRecipes = [
 {
     id: "10",
     title: "Stuffed Crust Pizza",
-    image: "img/noimgfound.jpg",
+    image: "img/id10stuffedcrustpizza.jpg",
     cookingTime: "3hr 20min",
     category: "lunch, dinner, bakery"
 },

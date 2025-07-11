@@ -191,7 +191,7 @@ window.allModalRecipes = [
     idMeal: "10",
     modMeal: "Stuffed Crust Pizza",
     modTime: "3hr 20min",
-    modMealThumb: "img/noimgfound.jpg",
+    modMealThumb: "img/id10stuffedcrustpizza.jpg",
     modInmoductions: "FILL THE DIRECTIONS HERE",
     modIngredient1: "270ml water (30 C°)",
     modIngredient2: "5g dry yeast",
