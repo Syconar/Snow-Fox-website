@@ -1,5 +1,5 @@
 ﻿# Snow-Fox-website
-My personal recipe webpage with added functionality to import your own new recipes.
+My personal recipe webpage with added functionality to import your own new recipes. - still needs to get bit of love and work
 
 # What I learned
 - learned using data to connect coresponding cards and elements
