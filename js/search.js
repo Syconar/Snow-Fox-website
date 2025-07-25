@@ -179,7 +179,7 @@ if(categoryHash){
                         </div>
 
                         <div class="recipe-details-heading-img">
-                            <img src="${modalRecipeData.modMealThumb}" alt="">
+                            <img src="${modalRecipeData.modMealThumb}" alt="" class="modal-img-max">
                         </div>
                     </div>
 
