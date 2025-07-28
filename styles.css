@@ -1208,6 +1208,12 @@ input{
     line-height: 1.4;
 }
 
+@media (max-width: 552px) {
+  #recipe-details-content {
+    margin: 0;
+  }
+}
+
 #recipe-details-content h2{
     line-height: 2;
 }
@@ -1251,9 +1257,21 @@ input{
   }
 }
 
+@media (max-width: 516px) {
+  .recipe-details-heading-text {
+    font-size: 0.8rem;
+  }
+}
+
 .recipe-details-heading-text h2{
     width: 100%;
     font-size: 1.7rem;
+}
+
+@media (max-width: 516px) {
+  .recipe-details-heading-text h2{
+    font-size: 1.2rem;
+  }
 }
 
 .recipe-details-heading-img{
@@ -1310,6 +1328,12 @@ input{
     margin-top: 20px;
     padding: 10px 15px;
     border: 1px solid var(--modal-content-border);
+}
+
+@media (max-width: 516px) {
+  .recipe-details-list {
+    font-size: 0.8rem;
+  }
 }
 
 .recipe-details-ingredients{
