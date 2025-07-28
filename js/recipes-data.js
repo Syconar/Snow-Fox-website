@@ -16,7 +16,7 @@ window.allRecipes = [
 {
     id: "20",
     title: "Crème Brûlée",
-    image: "img/noimgfound.jpg",
+    image: "img/id20crèmebrûlée.jpg",
     cookingTime: "4hr",
     category: "desserts, pastries"
 },
@@ -65,7 +65,7 @@ window.allRecipes = [
 {
     id: "13",
     title: "Czech Bacon Dumplings",
-    image: "img/noimgfound.jpg",
+    image: "img/id13czechbacondumplings.jpg",
     cookingTime: "30min",
     category: "lunch, dinner"
 },
@@ -121,7 +121,8 @@ window.allRecipes = [
 {
     id: "5",
     title: "Chicken Burger",
-    image: "img/noimgfound.jpg",
+    image: "img/id5chickenburger.jpg",
+    image: "img/id5chickenburger.jpg",
     cookingTime: "20min",
     category: "lunch, dinner"
 },
